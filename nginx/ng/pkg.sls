@@ -38,7 +38,7 @@ nginx_official_repo:
     - name: deb http://nginx.org/packages/{{ grains['os'].lower() }}/ {{ grains['oscodename'] }} nginx
     - file: /etc/apt/sources.list.d/nginx-official-{{ grains['oscodename'] }}.list
     - keyid: ABF5BD827BD9BF62
-    - keyserver: keyserver.ubuntu.com
+    - keyserver: hkp://keyserver.ubuntu.com:80
     - require_in:
       - pkg: nginx_install
     - watch_in:
@@ -56,7 +56,7 @@ nginx_ppa_repo:
     {% else %}
     - name: deb http://ppa.launchpad.net/nginx/{{ nginx.ppa_version }}/ubuntu {{ grains['oscodename'] }} main
     - keyid: C300EE8C
-    - keyserver: keyserver.ubuntu.com
+    - keyserver: hkp://keyserver.ubuntu.com:80
     {% endif %}
     - require_in:
       - pkg: nginx_install
@@ -74,7 +74,7 @@ nginx_phusionpassenger_repo:
     - name: deb https://oss-binaries.phusionpassenger.com/apt/passenger {{ grains['oscodename'] }} main
     - file: /etc/apt/sources.list.d/nginx-phusionpassenger-{{ grains['oscodename'] }}.list
     - keyid: 561F9B9CAC40B2F7
-    - keyserver: keyserver.ubuntu.com
+    - keyserver: hkp://keyserver.ubuntu.com:80
     - require_in:
       - pkg: nginx_install
     - watch_in:
