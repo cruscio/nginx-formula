@@ -63,7 +63,7 @@ nginx-ppa-repo:
     - file: /etc/apt/sources.list.d/nginx-{{ pillar.get('nginx', {}).get('repo_version', 'stable') }}-{{ grains['oscodename'] }}.list
     - dist: {{ grains['oscodename'] }}
     - keyid: C300EE8C
-    - keyserver: keyserver.ubuntu.com
+    - keyserver: hkp://keyserver.ubuntu.com:80
     - require_in:
       - pkg: nginx
     - watch_in:
@@ -80,7 +80,7 @@ nginx-official-repo:
     - name: deb http://nginx.org/packages/{{ grains['os'].lower() }}/ {{ grains['oscodename'] }} nginx
     - file: /etc/apt/sources.list.d/nginx-official-{{ grains['oscodename'] }}.list
     - keyid: ABF5BD827BD9BF62
-    - keyserver: keyserver.ubuntu.com
+    - keyserver: hkp://keyserver.ubuntu.com:80
     - require_in:
       - pkg: nginx
     - watch_in:
